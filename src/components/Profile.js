@@ -12,21 +12,20 @@ const Profile = () => {
   return (
     <div className="container">
       <h3>
-        <strong>{currentUser.user.name}</strong>
+        Welcome to your profile <strong>{currentUser.user.name}!</strong>
         {' '}
-        Profile
       </h3>
       <p>
-        <strong>Token:</strong>
+        <strong>Name:</strong>
         {' '}
-        {currentUser.jwt.substring(0, 20)}
-        {' '}
-        ...
-        {' '}
-        {currentUser.jwt.substr(currentUser.jwt.length - 20)}
+        {currentUser.user.name}
       </p>
       <p>
-        <strong>Id:</strong>
+        <strong>Token:</strong>
+        {currentUser.jwt}
+      </p>
+      <p>
+        <strong>User Id:</strong>
         {' '}
         {currentUser.user.id}
       </p>
@@ -35,6 +34,7 @@ const Profile = () => {
         {' '}
         {currentUser.user.email}
       </p>
+      
     </div>
   );
 };

@@ -12,11 +12,8 @@ const Appointment = () => {
   const [error, setError] = useState(false);
   const { user: currentUser } = useSelector(state => state.auth);
   const alert = useAlert();
-  if (!currentUser) {
-    return <Redirect to="/login" />;
-  }
-
   const { id } = useParams();
+
   useEffect(() => {
     UserService.getAppointment(currentUser.user.id, id).then(
       response => {
@@ -40,6 +37,13 @@ const Appointment = () => {
         setDoctor(response.data);
       });
   }, []);
+  
+  if (!currentUser) {
+    return <Redirect to="/login" />;
+  }
+
+  
+  
 
   const handleClick = () => {
     setLoading(true);

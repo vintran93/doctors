@@ -104,6 +104,7 @@ const NewAppointment = ({ location }) => {
   if (successful) {
     return <Redirect to="/appointments" />;
   }
+  
   return (
     <div className="col-md-12">
       <div className="card card-container">

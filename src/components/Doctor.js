@@ -8,11 +8,8 @@ const Doctor = () => {
   const [content, setContent] = useState('');
   const [loading, setLoading] = useState(true);
   const { user: currentUser } = useSelector(state => state.auth);
-
-  if (!currentUser) {
-    return <Redirect to="/login" />;
-  }
   const { id } = useParams();
+
   useEffect(() => {
     UserService.getDoctor(id).then(
       response => {
@@ -31,6 +28,11 @@ const Doctor = () => {
       },
     );
   }, []);
+
+  if (!currentUser) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div className="container">
       <div className="text-center">
@@ -43,7 +45,7 @@ const Doctor = () => {
             {content.name}
           </h2>
           <p className={`${classes.badge} ${classes.badgeSecondary}`}>
-            Appointment Fee &nbsp;&nbsp;&nbsp;&nbsp; Rs. 300
+            Appointment Fee &nbsp;&nbsp;&nbsp;&nbsp; $ 50
           </p>
           <p className={classes.badge}>
             Qualification: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -75,3 +77,4 @@ const Doctor = () => {
 };
 
 export default Doctor;
+
